@@ -4,3 +4,4 @@ class ModelOne(models.Model):
 
     _name = "model.one"
     _description = "Model creation"
+
