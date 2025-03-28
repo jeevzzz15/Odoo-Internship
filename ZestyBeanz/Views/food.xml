@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!--Form view-->
+		<record id="view_food_food_form" model="ir.ui.view">
+			<field name="name">model.food.food</field>
+			<field name="model">food.food</field>
+			<field name="arch" type="xml">
+				<form string='Food'>
+
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="price" />
+                            <field name="quantity" />
+                            <field name="review" />
+                            <field name="is_satisfied" />
+                        </group>
+
+                        <group>
+                            <field name="check_in" />
+                            <field name="served_time" />
+                            <field name="types" />
+                            <field name="images" />
+                            <field name="blog" />
+                        </group>
+                    </group>
+
+
+                        
+				</form>
+			</field>
+		</record>
+
+		<!-- list -->
+		<record id="view_food_food_list" model="ir.ui.view">
+			<field name="name">food.food.list</field>
+			<field name="model">food.food</field>
+			<field name="arch" type="xml">
+				<list string='Food'>
+					<field name="name" />
+					<field name="price" />
+					<field name="review" />
+					<field name="is_satisfied" />
+					<field name="check_in" />
+					<field name="served_time" />
+				</list>
+			</field>
+		</record>
+		
+        <!-- Action -->
+		<record id="action_for_food" model="ir.actions.act_window">
+			<field name="name">Food</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">food.food</field>
+			<field name="view_mode">list,form</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p>Create Food</p>
+			</field>
+		</record>
+
+
+    <menuitem id="menu_food" name="Food"
+              sequence="10" />
+
+    <menuitem id="all_foods" name="All Foods"
+              parent="menu_food" sequence="1" />
+
+    <menuitem id="menu_for_food" name="Foods"
+            parent="all_foods"
+            action="action_for_food"
+            sequence="1" />
+
+
+
+	</data>
+</odoo>

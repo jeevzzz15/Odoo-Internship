@@ -9,7 +9,11 @@
 'website': 'www.zbeanztech.com',
 "license": "LGPL-3",
 'depends': [],
-'data': [],
+'data': [
+    'Views/model_one_view.xml'
+    'Views/Models/food.py'
+    'Views/menu.xml'
+],
 'test': [],
 'demo': [],
 'installable': True,

@@ -6,7 +6,7 @@ class Food(models.Model):
 
     name = fields.Char(string="Name")
     price = fields.Float(string="Standard Price")
-    quantity = fields.Integer(string="Integer")
+    quantity = fields.Integer(string="Amount")
     review = fields. Text (string="Review Of The Food")
     is_satisfied = fields. Boolean (string="Satisfied/Not")
     check_in = fields.Date(string="Check In")

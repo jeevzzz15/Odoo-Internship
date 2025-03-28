@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- Main Menu-->
+	<menuitem id="menu_for_sampleeee_module"
+		name="Sample Menu"
+		sequence="2"/>
+		
+	<!--Sub Menu-->
+	<menuitem id="menu_for_model_one"
+		name="Models"
+		action="action_for_model_one"
+		parent='sample.menu_for_sampleeee_module'
+		sequence="1" />
+		
+</odoo>
