@@ -7,21 +7,134 @@
 			<field name="model">model.one</field>
 			<field name="arch" type="xml">
 				<form string='Model One'>
-					<field name="id" />
-					<field name="create_date" />
+					<sheet>
+						<group>
+						<group>
+							<field name="name" string="Display Name" />
+							<field name="age" readonly="1"  />
+							<field name="description" />
+						</group>
+						<group>
+							<field name="gender" />
+							<field name="active" />	
+							<field name="date" />	
+							<field name="create_uid" />	
+						</group>
+					</group>
+					</sheet>
 				</form>
 			</field>
 		</record>
 		
+		<!--List View-->
 		<record id="view_tree_model_one" model="ir.ui.view">
 			<field name="name">model.one.tree</field>
 			<field name="model">model.one</field>
 			<field name="arch" type="xml">
 				<list string='Model One'>
-					<field name="id" />
-					<field name="create_date" />
+					<field name="name" string="Name" />
+					<field name="age"  />
+					<field name="description" />
+					<field name="gender" />
+					<field name="active" />	
+					<field name="date" />
+					<field name="create_uid" />		
 				</list>
 			</field>
 		</record>
+		
+		<!--Kanban view-->
+		<record id="model_one_view_kanban" model="ir.ui.view">
+			<field name="name">model.one.kanban</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<kanban string='Model One'>
+					<field name="name" />
+					<field name="age" />
+					<field name="gender" />
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="oe_kanban_global_click">
+								<div class="oe_kanban_details">
+									<ul>
+										<li>Name: <field name="name" /></li>
+										<li>Age: <field name="age" /></li>
+										<li>Gender: <field name="gender" /></li>
+									</ul>									
+								</div>								
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+		
+		<!--Search View-->
+		<record id="view_search_model_one" model="ir.ui.view">
+			<field name="name">model.one.search</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<search string='Model One'>
+					<field name="name" string="Name" />
+					<field name="age"  />
+					<!--Filters-->
+					<filter string="Archived" name="archived" domain="[('active', '=', False)]" />
+					<filter string="Adults" name="adults" domain="[('age', '>', 18)]" />
+					<!--Groups-->
+					<group expand="0" string="Group BY">
+						<filter string="Gender" name="gender" context="{'group_by' : 'gender'}" />
+						<filter string="Name" name="name" context="{'group_by' : 'name'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+		
+		<!--Pivot View-->
+		<record id="view_pivot_model_one" model="ir.ui.view">
+			<field name="name">model.one.pivot</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<pivot string='Model One'>
+					<field name="name" type="row" />
+				</pivot>
+			</field>
+		</record>
+		
+		<!--graph View-->
+		<record id="view_graph_model_one" model="ir.ui.view">
+			<field name="name">model.one.graph</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<graph string='Model One'>
+					<field name="name" type="row" />
+					<field name="age" type="measure" />
+				</graph>
+			</field>
+		</record>
+		
+		<!--Calendar View-->
+		<record id="view_calendar_model_one" model="ir.ui.view">
+			<field name="name">model.one.calendar</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<calendar string='Model One' date_start="date" color="name" mode="year">
+					<field name="name" />
+					<field name="age" />
+				</calendar>
+			</field>
+		</record>
+		
+		<!--action-->
+		<record id="action_for_model_one" model="ir.actions.act_window">
+			<field name="name"> Model One</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">model.one</field>
+			<field name="view_mode">list,form,kanban,search,pivot,graph,calendar</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p>Model one for has no data</p>
+			</field>
+		</record>
+
 	</data>
 </odoo>
