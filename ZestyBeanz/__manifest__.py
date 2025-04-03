@@ -11,8 +11,9 @@
 'depends': [],
 'data': [
     'Views/model_one_view.xml'
-    'Views/Models/food.py'
+    'Views/Models/food.xml'
     'Views/menu.xml'
+    'Views/car_rental.xml'
 ],
 'test': [],
 'demo': [],
