@@ -1,65 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
-		<!--Form view-->
+		<!-- Form View -->
 		<record id="view_form_car_rental" model="ir.ui.view">
 			<field name="name">car.rental.form</field>
 			<field name="model">car.rental</field>
 			<field name="arch" type="xml">
-				<form string='Model Car Rental'>
-					<field name="car_name"/>
-                    <field name="car_model"/>
-                    <field name="body_color"/>
-                    <field name="wheel_type"/>
-                    <field name="amount"/>
-                    <field name="available"/>
-                    <field name="seat_count"/>
+				<form string="Model Car Rental">
+					<sheet>
+						<group>
+							<field name="car_name"/>
+							<field name="car_model"/>
+							<field name="body_color"/>
+							<field name="wheel_type"/>
+							<field name="amount"/>
+							<field name="available"/>
+							<field name="seat_count"/>
+						</group>
+					</sheet>
 				</form>
 			</field>
 		</record>
 		
-		<!--List View-->
-		<record id="view_form_car_rental" model="ir.ui.view">
-			<field name="name">car.rental.form</field>
+		<!-- List View (Changed <list> to <tree>) -->
+		<record id="view_tree_car_rental" model="ir.ui.view">
+			<field name="name">car.rental.tree</field>
 			<field name="model">car.rental</field>
+			<field name="type">list</field>
 			<field name="arch" type="xml">
-				<list string='Model Car Rental'>
+				<list string="Model Car Rental">
 					<field name="car_name"/>
-                    <field name="car_model"/>
-                    <field name="body_color"/>
-                    <field name="wheel_type"/>
-                    <field name="amount"/>
-                    <field name="available"/>
-                    <field name="seat_count"/>	
+					<field name="car_model"/>
+					<field name="body_color"/>
+					<field name="wheel_type"/>
+					<field name="amount"/>
+					<field name="available"/>
+					<field name="seat_count"/>	
 				</list>
 			</field>
 		</record>
 		
-		<!--Kanban view-->
-		<record id="view_form_car_rental" model="ir.ui.view">
-			<field name="name">car.rental.form</field>
+		<!-- Kanban View -->
+		<record id="view_kanban_car_rental" model="ir.ui.view">
+			<field name="name">car.rental.kanban</field>
 			<field name="model">car.rental</field>
 			<field name="arch" type="xml">
-				<kanban string='Model Car Rental'>
-					<field name="car_name"/>
-                    <field name="car_model"/>
-                    <field name="body_color"/>
-                    <field name="wheel_type"/>
-                    <field name="amount"/>
-                    <field name="available"/>
-                    <field name="seat_count"/>
+				<kanban string="Model Car Rental">
 					<templates>
 						<t t-name="kanban-box">
 							<div t-attf-class="oe_kanban_global_click">
 								<div class="oe_kanban_details">
 									<ul>
-										<li>Name: <field name="car_name" /></li>
-										<li>Model: <field name="car_model" /></li>
-										<li>Color: <field name="body_color" /></li>
-                                        <li>Wheel_type: <field name="wheel_type" /></li>
-                                        <li>Amount: <field name="amount" /></li>
-                                        <li>Available: <field name="available" /></li>
-                                        <li>Count: <field name="seat_count" /></li>
+										<li>Name: <field name="car_name"/></li>
+										<li>Model: <field name="car_model"/></li>
+										<li>Color: <field name="body_color"/></li>
+										<li>Wheel Type: <field name="wheel_type"/></li>
+										<li>Amount: <field name="amount"/></li>
+										<li>Available: <field name="available"/></li>
+										<li>Count: <field name="seat_count"/></li>
 									</ul>									
 								</div>								
 							</div>
@@ -69,21 +67,21 @@
 			</field>
 		</record>
 		
-		<!--Pivot View-->
-		<record id="view_form_car_rental" model="ir.ui.view">
-			<field name="name">car.rental.form</field>
+		<!-- Pivot View -->
+		<record id="view_pivot_car_rental" model="ir.ui.view">
+			<field name="name">car.rental.pivot</field>
 			<field name="model">car.rental</field>
 			<field name="arch" type="xml">
-				<pivot string='Model Car Rental'>
+				<pivot string="Model Car Rental">
 					<field name="car_name"/>
-                    <field name="car_model"/>
-                    <field name="body_color"/>
-                    <field name="wheel_type"/>
-                    <field name="amount"/>
-                    <field name="available"/>
-                    <field name="seat_count"/>
+					<field name="car_model"/>
+					<field name="body_color"/>
+					<field name="wheel_type"/>
+					<field name="amount"/>
+					<field name="available"/>
+					<field name="seat_count"/>
 				</pivot>
 			</field>
 		</record>
-    <data>
-<odoo>		
+    </data>
+</odoo>

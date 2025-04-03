@@ -10,10 +10,14 @@
 "license": "LGPL-3",
 'depends': [],
 'data': [
-    'Views/model_one_view.xml'
-    'Views/Models/food.xml'
-    'Views/menu.xml'
-    'Views/car_rental.xml'
+    
+    'Security/security.xml', # Always keep security fiels @ top
+    'Security/ir.model.access.csv', # Always keep security fiels @ top
+    'Views/model_one_view.xml',
+    'Views/food.xml',
+    'Views/menu.xml',
+    'Views/car_rental.xml',
+    
 ],
 'test': [],
 'demo': [],

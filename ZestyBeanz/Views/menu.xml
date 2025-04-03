@@ -10,7 +10,7 @@
 	<menuitem id="menu_for_model_one"
 		name="Models"
 		action="action_for_model_one"
-		parent='sample.menu_for_sampleeee_module'
+		parent='menu_for_sampleeee_module'
 		sequence="1" />
 		
 </odoo>
