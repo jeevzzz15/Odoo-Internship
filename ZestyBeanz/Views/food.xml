@@ -8,27 +8,44 @@
 			<field name="arch" type="xml">
 				<form string='Food'>
 
+					<header>
+						<div class="custom-header-buttons">
+							<button name="create_sale_order" string="Create Sale Order" invisible="_sale_created == True" type="object" class="oe_highlight"/>
+							<button name="purchase_records" string="Purchase Orders"  type="object" class="oe_highlight"/>
+							<button name="change_the_record" string="Write the vals"  type="object" class="oe_highlight"/>
+							<button name="delet_the_rec" string="Delete"  type="object" class="oe_highlight"/>
+						</div>
+					</header>
+					<sheet>
                     <group>
                         <group>
-                            <field name="name" />
+                            <field name="partner_id" required="1"/>
                             <field name="price" />
                             <field name="quantity" />
-                            <field name="review" />
+                            <field name="review" required="price == False"/>
                             <field name="is_satisfied" />
+							<field name="sale_order_id" />
+							<field name="invoice_id" />
+							<field name="_sale_created" invisible="1"/>
+							
                         </group>
 
                         <group>
-                            <field name="check_in" />
+                            <field name="check_in" readonly = "price == False"/>
                             <field name="served_time" />
                             <field name="types" />
                             <field name="images" />
                             <field name="blog" />
+                            <field name="date_of_birth" />
+                            <field name="age" />
+							
                         </group>
                     </group>
 
 
-                        
+                 </sheet>       
 				</form>
+				
 			</field>
 		</record>
 
@@ -38,7 +55,7 @@
 			<field name="model">food.food</field>
 			<field name="arch" type="xml">
 				<list string='Food'>
-					<field name="name" />
+					<field name="partner_id" />
 					<field name="price" />
 					<field name="review" />
 					<field name="is_satisfied" />
