@@ -43,24 +43,24 @@ class Food(models.Model):
 	# Create
 	# Extend     = Extending base logic + Custom logic (base+custom)
 	# Override   = Is Removing all the base Function and Setting Your logic
-	@api.model
-	def create(self,vals):
+	# @api.model
+	# def create(self,vals):
 
-		print("Before RES")
-		print("Self is ===",self)
-		print("Vals is ===",vals)
+	# 	print("Before RES")
+	# 	print("Self is ===",self)
+	# 	print("Vals is ===",vals)
 
-		res = super(Food,self).create(vals)
+	# 	res = super(Food,self).create(vals)
 
-		print("After RES")
-		print("Self is ===",self)
-		print("Vals is ===",vals)
-		print("RES is ===",res)
+	# 	print("After RES")
+	# 	print("Self is ===",self)
+	# 	print("Vals is ===",vals)
+	# 	print("RES is ===",res)
 
-		if res.is_satisfied == False: # checking the is_satisfield is true or not
-			res.is_satisfied = True   # assingning it true
+	# 	if res.is_satisfied == False: # checking the is_satisfield is true or not
+	# 		res.is_satisfied = True   # assingning it true
 
-		return res
+	# 	return res
 	
 	def write(self,vals):
 		
@@ -89,7 +89,7 @@ class Food(models.Model):
 	# C  = Create
 	def create_sale_order(self):
 		sale_order = self.env['sale.order'].create([{
-			'partner_id':23
+			'partner_id':self.partner_id
 			}])
 		self._sale_created = True
 		return sale_order

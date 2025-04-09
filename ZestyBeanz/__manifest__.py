@@ -8,7 +8,7 @@
 'author': ' Jeevan V',
 'website': 'www.zbeanztech.com',
 "license": "LGPL-3",
-'depends': [],
+'depends': ['account','sale','product'],
 'data': [
     
     'Security/security.xml', # Always keep security fiels @ top

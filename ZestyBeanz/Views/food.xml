@@ -24,8 +24,8 @@
                             <field name="quantity" />
                             <field name="review" required="price == False"/>
                             <field name="is_satisfied" />
-							<field name="sale_order_id" />
-							<field name="invoice_id" />
+							<field name="sale_order_id" readonly="1"/>
+							<field name="invoice_id" readonly="1"/>
 							<field name="_sale_created" invisible="1"/>
 							
                         </group>
