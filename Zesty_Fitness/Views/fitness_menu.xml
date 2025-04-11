@@ -1,0 +1,9 @@
+<odoo>
+    <menuitem id="fitness_root_menu" name="Fitness Center" sequence="10"/>
+
+    <menuitem id="fitness_member_menu" name="Members"
+              parent="fitness_root_menu" action="action_fitness_member"/>
+
+    <menuitem id="fitness_membership_menu" name="Membership Plans"
+              parent="fitness_root_menu" action="action_fitness_membership"/>
+</odoo>

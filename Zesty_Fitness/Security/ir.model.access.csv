@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fitness_member_all,access.fitness.member.all,model_fitness_member,,1,1,1,1
+access_fitness_membership_all,access.fitness.membership.all,model_fitness_membership,,1,1,1,1
