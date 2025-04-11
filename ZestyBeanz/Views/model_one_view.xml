@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
-		<!--Form view-->
+		<!-- Form view -->
 		<record id="view_form_model_one" model="ir.ui.view">
 			<field name="name">model.one.form</field>
 			<field name="model">model.one</field>
@@ -9,55 +9,49 @@
 				<form string='Model One'>
 					<sheet>
 						<group>
-						<group>
-							<field name="name" string="Display Name" />
-							<field name="age" readonly="1"  />
-							<field name="description" />
-							<field name="product_ids" widget="many2many_tags" />	
+							<group>
+								<field name="seq" readonly="1"/>
+								<field name="name" string="Name" />
+								<field name="age" />
+								<field name="email" />
+								<field name="description" optional="hide"/>
+								<field name="sale_ids" domain="[('state','=','sale'),('user_id', '=', 2)]" />
+							</group>
+							<group>
+								<field name="gender" />
+								<field name="active" />
+								<field name="joining_date" />
+								<field name="create_uid" string="Created By" readonly="1"/>
+								<field name="partner_ids" widget="many2many_tags" />
+							</group>
 						</group>
-						<group>
-							<field name="gender" />
-							<field name="active" />	
-							<field name="date" />	
-							<field name="create_uid" />	
-							<field name="partner_ids" widget="many2many_tags"  />	
-						</group>
-					</group>
-					<notebook>
-						<page string="Model One Lines">
-							<field name="model_one_line_ids" >
-								<list editable="bottom">
-									<field name="name" />
-									<field name="product_id"  />
-									<field name="price"  />
-								</list>
-							</field>
-						</page>
-					</notebook>
 					</sheet>
 				</form>
 			</field>
 		</record>
-		
-		<!--List View-->
+
+		<!-- List View -->
 		<record id="view_tree_model_one" model="ir.ui.view">
 			<field name="name">model.one.tree</field>
 			<field name="model">model.one</field>
 			<field name="arch" type="xml">
 				<list string='Model One'>
+					<field name="seq"/>
 					<field name="name" string="Name" />
-					<field name="age"  />
-					<field name="description" />
+					<field name="age" />
+					<field name="email" />
+					<field name="joining_date" />
+					<field name="description" optional="hide"/>
 					<field name="gender" />
-					<field name="active" />	
-					<field name="date" />
-					<field name="create_uid" />		
-					<field name="partner_ids"  widget="many2many_tags" />	
+					<field name="active" />
+					<field name="create_uid" string="Created By"/>
+					<field name="partner_ids" widget="many2many_tags" />
+					<field name="sale_ids" widget="many2many_tags" />
 				</list>
 			</field>
 		</record>
-		
-		<!--Kanban view-->
+
+		<!-- Kanban View -->
 		<record id="model_one_view_kanban" model="ir.ui.view">
 			<field name="name">model.one.kanban</field>
 			<field name="model">model.one</field>
@@ -65,6 +59,8 @@
 				<kanban string='Model One'>
 					<field name="name" />
 					<field name="age" />
+					<field name="email" />
+					<field name="joining_date" />
 					<field name="gender" />
 					<templates>
 						<t t-name="kanban-box">
@@ -73,82 +69,65 @@
 									<ul>
 										<li>Name: <field name="name" /></li>
 										<li>Age: <field name="age" /></li>
+										<li>Email: <field name="email" /></li>
+										<li>Joined: <field name="joining_date" /></li>
 										<li>Gender: <field name="gender" /></li>
-									</ul>									
-								</div>								
+									</ul>
+								</div>
 							</div>
 						</t>
 					</templates>
 				</kanban>
 			</field>
 		</record>
-		
-		<!--Search View-->
+
+		<!-- Search View -->
 		<record id="view_search_model_one" model="ir.ui.view">
 			<field name="name">model.one.search</field>
 			<field name="model">model.one</field>
 			<field name="arch" type="xml">
 				<search string='Model One'>
-					<field name="name" string="Name" />
-					<field name="age"  />
-					<!--Filters-->
-					<filter string="Archived" name="archived" domain="[('active', '=', False)]" />
+					<field name="name" />
+					<field name="age" />
+					<field name="email" />
+					<field name="joining_date" />
+					<!-- Filters -->
+					<filter string="Archived" name="archived" domain="['|',('gender', '=', 'female'),('age','>',18)]" />
 					<filter string="Adults" name="adults" domain="[('age', '>', 18)]" />
-					<!--Groups-->
+					<filter string="Joined This Year" name="joined_this_year" domain="[('joining_date', '>=', (context_today().replace(month=1, day=1)))]" />
+					<filter string="With Email" name="has_email" domain="[('email','!=',False)]"/>
+					<!-- Groups -->
 					<group expand="0" string="Group BY">
 						<filter string="Gender" name="gender" context="{'group_by' : 'gender'}" />
 						<filter string="Name" name="name" context="{'group_by' : 'name'}" />
+						<filter string="Joining Date" name="joining_date" context="{'group_by' : 'joining_date'}" />
 					</group>
 				</search>
 			</field>
 		</record>
-		
-		<!--Pivot View-->
+
+		<!-- Pivot View -->
 		<record id="view_pivot_model_one" model="ir.ui.view">
 			<field name="name">model.one.pivot</field>
 			<field name="model">model.one</field>
 			<field name="arch" type="xml">
 				<pivot string='Model One'>
 					<field name="name" type="row" />
+					<field name="joining_date" type="col" />
 				</pivot>
 			</field>
 		</record>
-		
-		<!--graph View-->
-		<record id="view_graph_model_one" model="ir.ui.view">
-			<field name="name">model.one.graph</field>
-			<field name="model">model.one</field>
-			<field name="arch" type="xml">
-				<graph string='Model One'>
-					<field name="name" type="row" />
-					<field name="age" type="measure" />
-				</graph>
-			</field>
-		</record>
-		
-		<!--Calendar View-->
-		<record id="view_calendar_model_one" model="ir.ui.view">
-			<field name="name">model.one.calendar</field>
-			<field name="model">model.one</field>
-			<field name="arch" type="xml">
-				<calendar string='Model One' date_start="date" color="name" mode="year">
-					<field name="name" />
-					<field name="age" />
-				</calendar>
-			</field>
-		</record>
-		
-		<!--action-->
+
+		<!-- Action -->
 		<record id="action_for_model_one" model="ir.actions.act_window">
-			<field name="name"> Model One</field>
+			<field name="name">Model One</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">model.one</field>
-			<field name="view_mode">list,form,kanban,search,pivot,graph,calendar</field>
+			<field name="view_mode">list,form,kanban,pivot</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p>Model one for has no data</p>
 			</field>
 		</record>
-
 	</data>
 </odoo>
