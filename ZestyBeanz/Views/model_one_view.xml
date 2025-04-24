@@ -7,6 +7,12 @@
 			<field name="model">model.one</field>
 			<field name="arch" type="xml">
 				<form string='Model One'>
+					<header>
+						<button name="helloworld" string="Hello World" type="object" class="btn-primary" />
+						<button name="show_wizard" string="Show Wizard" type="object" class="btn-secondary" />
+						<button name="%(ZestyBeanz.action_for_sample_wizard)d" string="Wizard Action Button" type="action" class="oe_highlight" />
+						<button name="%(sale.action_quotations_with_onboarding)d" string="Sale Order" type="action" class="oe_highlight" />
+					</header>
 					<sheet>
 						<group>
 							<group>

@@ -15,6 +15,22 @@ class ModelOne(models.Model):
     partner_ids = fields.Many2many('res.partner',string="Partner")
     sale_ids = fields.Many2many('sale.order','model_one_sale_rel','model_one_id','sale_id', string="Sale")
     model_one_line_ids = fields.One2many('model.one.lines', 'model_one_id', string="Product")
+    sale_id = fields.Many2one('sale.order', string="Sales")
+
+    def helloworld(self):
+        print("Hello World")
+    
+    def show_wizard(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'My Sample Wizard',             
+            'res_model': 'sample.wizard',       
+            'view_mode': 'form',
+            'view_id': self.env.ref('ZestyBeanz.view_form_sample_wizard').id,
+            'target': 'new',
+            'context': {'default_name': 'Thunder'}
+    }
+
 
     @api.model
     def create(self,vals):

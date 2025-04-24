@@ -13,13 +13,13 @@
     
     'Security/security.xml', # Always keep security fiels @ top
     'Security/ir.model.access.csv', # Always keep security fiels @ top
+    'Wizard/sample_wizard_view.xml',
     'Views/model_one_view.xml',
     'Views/food.xml',
     'Views/menu.xml',
     'Views/car_rental.xml',
     'Data/sequence.xml',
-    'Views/model_one_lines.xml',
-    
+    'Views/model_one_lines.xml', 
 ],
 'test': [],
 'demo': [],

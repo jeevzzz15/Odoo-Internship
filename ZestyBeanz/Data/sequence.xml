@@ -5,7 +5,7 @@
         <record id="sequence_for_model_one" model="ir.sequence">
             <field name="name">Model One Sequence</field>
             <field name="code">sequence.model.one</field>
-            <field name="prefix">SKA</field>
+            <field name="prefix">Jeevan</field>
             <field name="padding">5</field>
             <field eval="False" name="company_id"/>
         </record>
