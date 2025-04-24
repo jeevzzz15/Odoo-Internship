@@ -12,6 +12,7 @@
 						<button name="show_wizard" string="Show Wizard" type="object" class="btn-secondary" />
 						<button name="%(ZestyBeanz.action_for_sample_wizard)d" string="Wizard Action Button" type="action" class="oe_highlight" />
 						<button name="%(sale.action_quotations_with_onboarding)d" string="Sale Order" type="action" class="oe_highlight" />
+						<button name="write_values" string="Write Values" type="object" class="btn-primary" />
 					</header>
 					<sheet>
 						<group>
@@ -21,7 +22,9 @@
 								<field name="age" />
 								<field name="email" />
 								<field name="description" optional="hide"/>
-								<field name="sale_ids" domain="[('state','=','sale'),('user_id', '=', 2)]" />
+								<field name="product_ids" widget="many2many_tags" />
+								<field name="sale_id" domain="[('state', '=', 'sale'),('user_id', '=', 2)]" />
+								<field name="sale_ids" widget="many2many_tags" />
 							</group>
 							<group>
 								<field name="gender" />
@@ -31,6 +34,19 @@
 								<field name="partner_ids" widget="many2many_tags" />
 							</group>
 						</group>
+						<!-- ✅ Added notebook here -->
+						<notebook>
+							<page string="Model One Lines">
+								<field name="model_one_line_ids">
+									<list editable="bottom">
+										<field name="id" />
+										<field name="name" />
+										<field name="product_id" />
+										<field name="price" />
+									</list>
+								</field>
+							</page>
+						</notebook>
 					</sheet>
 				</form>
 			</field>
@@ -50,6 +66,7 @@
 					<field name="description" optional="hide"/>
 					<field name="gender" />
 					<field name="active" />
+					<field name="sale_id">
 					<field name="create_uid" string="Created By"/>
 					<field name="partner_ids" widget="many2many_tags" />
 					<field name="sale_ids" widget="many2many_tags" />
@@ -130,7 +147,8 @@
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">model.one</field>
 			<field name="view_mode">list,form,kanban,pivot</field>
-			<field name="context">{}</field>
+			<field name="context">{'default_name': 'Jeevan V', 'default_gender' : 'male'}</field>
+			<field name="domain">[('gender', '=', 'male')]</field>
 			<field name="help" type="html">
 				<p>Model one for has no data</p>
 			</field>
