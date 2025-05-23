@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!--Form view-->
+		<record id="view_form_model_one" model="ir.ui.view">
+			<field name="name">model.one.form</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<form string='Model One'>
+					<header>
+						
+						<button name="%(zestybeanz.action_for_sample_wizard)d" string="Wizard Action Button" type="action" class="oe_highlight" />
+						<button name="%(sale.action_quotations_with_onboarding)d" string="Sale Order" type="action" class="oe_highlight" />
+						<button name="write_values" string="Write Values" type="object" class="btn-primary" />
+						<button name="send_my_email" string="Send Email" type="object" class="btn-primary" />
+					</header>
+					<sheet>
+						 <div class="oe_button_box" name="button_box">
+		                    <button name="show_wizard" string="Show Wizard" type="object" icon="fa-ticket" class="oe_stat_button" />
+		                   <button name="show_sale" string="Sale Order" type="object" class="oe_stat_button" icon="fa-dollar">
+								<div class="o_stat_info">
+									<span class="o_stat_value">
+										<field name="sale_count" />
+									</span>
+									<span class="o_stat_text">
+                                        Sale Order
+                                    </span>
+								</div>								
+							</button>
+		                </div>
+						<group>
+						<group>
+							<field name="seq" readonly="1" />
+							<field name="name" string="Display Name" />
+						<!--	<field name="employee_name" />-->
+							<field name="age" readonly="1"  />
+							<field name="description" />
+							<field name="email" />
+							<field name="product_ids" widget="many2many_tags" />	
+							<field name="sale_ids" widget="many2many_tags" />	
+							<field name="sale_count" />
+							<field name="sale_id" domain="[('state', '=', 'sale'),('user_id', '=', 2)]" />
+						</group>
+						<group>
+							<field name="gender" />
+							<field name="is_special" />	
+							<field name="active" />	
+							<!--<field name="employee_id" invisible="not employee_id" />-->
+							<field name="date" />	
+							<field name="create_uid" />	
+							<field name="partner_ids" widget="many2many_tags"  />	
+							<field name="partner_count" />	
+						</group>
+					</group>
+					<notebook>
+						<page string="Model One Lines">
+							<field name="model_one_line_ids" >
+								<list editable="bottom">
+									<field name="id" />
+									<field name="name" />
+									<field name="product_id"  />
+									<field name="price"  />
+								</list>
+							</field>
+						</page>
+					</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!--List View-->
+		<record id="view_tree_model_one" model="ir.ui.view">
+			<field name="name">model.one.tree</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<list string='Model One'>
+					<field name="seq" />
+					<field name="name" string="Name" />
+					<field name="age"  />
+					<field name="description" />
+					<field name="gender" />
+					<field name="active" />	
+					<field name="sale_id" />
+					<field name="date" />
+					<field name="create_uid" />		
+					<field name="partner_ids"  widget="many2many_tags" />	
+				</list>
+			</field>
+		</record>
+		
+		<!--Kanban view-->
+		<record id="model_one_view_kanban" model="ir.ui.view">
+			<field name="name">model.one.kanban</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<kanban string='Model One'>
+					<field name="name" />
+					<field name="age" />
+					<field name="gender" />
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="oe_kanban_global_click">
+								<div class="oe_kanban_details">
+									<ul>
+										<li>Name: <field name="name" /></li>
+										<li>Age: <field name="age" /></li>
+										<li>Gender: <field name="gender" /></li>
+									</ul>									
+								</div>								
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+		
+		<!--Search View-->
+		<record id="view_search_model_one" model="ir.ui.view">
+			<field name="name">model.one.search</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<search string='Model One'>
+					<field name="name" string="Name" />
+					<field name="age"  />
+					<!--Filters-->
+					<filter string="Archived" name="archived" domain="[('active', '=', False)]" />
+					<filter string="Adults" name="adults" domain="[('age', '>', 18)]" />
+					<!--Groups-->
+					<group expand="0" string="Group BY">
+						<filter string="Gender" name="gender" context="{'group_by' : 'gender'}" />
+						<filter string="Name" name="name" context="{'group_by' : 'name'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+		
+		<!--Pivot View-->
+		<record id="view_pivot_model_one" model="ir.ui.view">
+			<field name="name">model.one.pivot</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<pivot string='Model One'>
+					<field name="name" type="row" />
+				</pivot>
+			</field>
+		</record>
+		
+		<!--graph View-->
+		<record id="view_graph_model_one" model="ir.ui.view">
+			<field name="name">model.one.graph</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<graph string='Model One'>
+					<field name="name" type="row" />
+					<field name="age" type="measure" />
+				</graph>
+			</field>
+		</record>
+		
+		<!--Calendar View-->
+		<record id="view_calendar_model_one" model="ir.ui.view">
+			<field name="name">model.one.calendar</field>
+			<field name="model">model.one</field>
+			<field name="arch" type="xml">
+				<calendar string='Model One' date_start="date" color="name" mode="year">
+					<field name="name" />
+					<field name="age" />
+				</calendar>
+			</field>
+		</record>
+		
+		<!--action-->
+		<record id="action_for_model_one" model="ir.actions.act_window">
+			<field name="name"> Model One</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">model.one</field>
+			<field name="view_mode">list,form,kanban,search,pivot,graph,calendar</field>
+			<field name="help" type="html">
+				<p>Model one for has no data</p>
+			</field>
+		</record>
+		
+		 <record id="action_increase_age_model_one" model="ir.actions.server">
+			<field name="name">Change Description</field>
+			<field name="model_id" ref="zestybeanz.model_model_one" />
+			<field name="binding_model_id" ref="zestybeanz.model_model_one" />
+			<field name="state">code</field>
+			<field name="code">action = records.change_description()</field>
+		</record>
+
+	</data>
+</odoo>

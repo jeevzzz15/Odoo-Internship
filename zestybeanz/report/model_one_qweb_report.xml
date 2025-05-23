@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id='model_one_pdf_report'>
+			<t t-call='web.html_container'>
+				<t t-foreach='docs' t-as='o'>
+						<t t-call='web.external_layout'>
+							<div class='page'>
+								<h2 class="text-center">Model One Report</h2>	
+								<table style="width: 100%; border: 1px solid black; margin-top: 30px">
+									<tr style="border: 1px solid black; color: yellow; background: #00008B">
+										<th style="border: 1px solid black">Name</th>
+										<th style="border: 1px solid black">Age</th>
+										<th style="border: 1px solid black">Gender</th>	
+										<t  t-if="o.description"><th style="border: 1px solid black">Description</th></t>	
+										<t  t-else=""><th style="border: 1px solid black">Email</th></t>					
+									</tr>
+									<tr style="border: 1px solid black">
+										<td style="border: 1px solid black; text-align: center"><span t-field="o.name" /></td>
+										<td style="border: 1px solid black; text-align: right; padding-right: 15px;"><span t-field="o.age" /></td>
+										<td style="border: 1px solid black; text-align: center"><span t-field="o.gender" /></td>
+										<td t-if="o.description" style="border: 1px solid black; text-align: left"><span t-field="o.description" /></td>
+										<td t-else="" style="border: 1px solid black; text-align: left"><span t-field="o.email" /></td>
+									</tr>
+								</table>
+								
+								<table style="width: 100%; border: 1px solid black; margin-top: 30px">
+									<tr style="border: 1px solid black; color: yellow; background: #00008B">
+										<th style="border: 1px solid black">Name</th>
+										<th style="border: 1px solid black">Product</th>
+										<th style="border: 1px solid black">Price</th>					
+									</tr>
+									<t t-foreach='o.model_one_line_ids' t-as='line'>
+										<tr style="border: 1px solid black">
+											<td style="border: 1px solid black; text-align: center"><span t-field="line.name" /></td>
+											<td style="border: 1px solid black; text-align: right; padding-right: 15px;"><span t-field="line.product_id" /></td>
+											<td style="border: 1px solid black; text-align: center"><span t-field="line.price" /></td>
+										</tr>
+									</t>
+								</table>
+							</div>
+						</t>
+					</t>
+				</t>
+		</template>
+	</data>
+</odoo>

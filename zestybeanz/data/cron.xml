@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate='0'>
+    	
+    	<!--Reminder Mail Scheduled Action-->
+    	<record  id="cron_increase_age_model_one" model="ir.cron">
+        	<field name="name">Increase Age</field>
+        	<field name="model_id" ref="zestybeanz.model_model_one" />
+        	<field name="state">code</field>
+        	<field name="code">model.increase_age()</field>
+        	<field name="interval_number">1</field>
+        	<field name="interval_type">days</field>
+    	</record>
+    </data>
+</odoo>
